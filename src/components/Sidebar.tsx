@@ -2,18 +2,24 @@ import { Link } from "react-router-dom";
 import { Box, Stack, HStack, Center, Image } from "@chakra-ui/react";
 import ProductsIcon from "../assets/images/wire.png";
 import HomeIcon from "../assets/images/home.png";
+import ContactIcon from "../assets/images/mail.png";
 
 const Sidebar = () => {
     const NAV_ITEMS = [
+        {
+            label: "Inicio",
+            href: "/",
+            icon: HomeIcon,
+        },
         {
             label: "Productos",
             href: "/products",
             icon: ProductsIcon,
         },
         {
-            label: "Inicio",
-            href: "/home",
-            icon: HomeIcon,
+            label: "Contactos",
+            href: "/contacts",
+            icon: ContactIcon,
         },
     ];
 

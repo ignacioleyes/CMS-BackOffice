@@ -1,12 +1,13 @@
 import { Grid, Flex, Box } from "@chakra-ui/react";
 import { ReactNode } from "react";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Sidebar from "./components/Sidebar";
 import SignIn from "./pages/signIn/SignIn";
 import { RequireAuth } from "react-auth-kit";
 import Products from "./pages/products/Products";
 import Home from "./pages/home/Home";
+import Contact from "./pages/contact/Contact";
 
 const signInPath = "/sign-in";
 
@@ -59,12 +60,12 @@ const App = () => {
                 path="/"
                 element={
                     <AuthenticatedLayout>
-                        <Navigate to={"/products"} />
+                        <Home />
                     </AuthenticatedLayout>
                 }
             />
             <Route
-                path="products"
+                path="/products"
                 element={
                     <AuthenticatedLayout>
                         <Products />
@@ -72,10 +73,10 @@ const App = () => {
                 }
             />
             <Route
-                path="home"
+                path="/contacts"
                 element={
                     <AuthenticatedLayout>
-                        <Home />
+                        <Contact />
                     </AuthenticatedLayout>
                 }
             />
