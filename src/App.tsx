@@ -1,35 +1,77 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Grid, Flex, Box } from "@chakra-ui/react";
+import { ReactNode } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import Navbar from "./components/navbar/Navbar";
+import Sidebar from "./components/Sidebar";
+import SignIn from "./pages/signIn/SignIn";
+import { RequireAuth } from "react-auth-kit";
+import Products from "./pages/products/Products";
 
-function App() {
-  const [count, setCount] = useState(0)
+const signInPath = "/sign-in";
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface Props {
+    children: ReactNode;
 }
 
-export default App
+const AuthenticatedLayout = ({ children }: Props) => {
+    const location = useLocation();
+    return (
+        <RequireAuth loginPath={signInPath}>
+            <Grid
+                bgColor={"whitesmoke"}
+                templateColumns="8rem 1fr minmax(0, 1fr)"
+                h="100vh"
+                overflow={"hidden"}
+            >
+                <Box h="100%">
+                    {!location.pathname.toLowerCase().includes("/sign-in") && (
+                        <Sidebar />
+                    )}
+                </Box>
+                <Flex
+                    gridColumn="2 / span 2"
+                    bgColor="transparent"
+                    h="64px"
+                    justify="center"
+                    align="center"
+                    fontWeight="bold"
+                    fontSize="2xl"
+                    color="white"
+                >
+                    {!location.pathname.toLowerCase().includes("/sign-in") && (
+                        <Navbar />
+                    )}
+                </Flex>
+                <Box gridColumn="2 / span 2" h="calc(100vh - 64px)" p="5">
+                    {children}
+                </Box>
+            </Grid>
+        </RequireAuth>
+    );
+};
+
+const App = () => {
+    return (
+        <Routes>
+            <Route path={signInPath} element={<SignIn />} />
+            <Route
+                path="/"
+                element={
+                    <AuthenticatedLayout>
+                        <Navigate to={"/products"} />
+                    </AuthenticatedLayout>
+                }
+            />
+            <Route
+                path="products"
+                element={
+                    <AuthenticatedLayout>
+                        <Products />
+                    </AuthenticatedLayout>
+                }
+            />
+        </Routes>
+    );
+};
+
+export default App;
