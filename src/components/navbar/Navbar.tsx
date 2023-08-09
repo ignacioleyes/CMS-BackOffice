@@ -18,7 +18,6 @@ const Navbar = () => {
             ms={8}
             p={4}
             mt={5}
-            // boxShadow="1px 1px 10px rgba(211, 211, 211, 0.3)"
         >
             <HStack w={"full"} h={"full"}>
                 <HStack

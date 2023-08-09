@@ -6,6 +6,7 @@ import Sidebar from "./components/Sidebar";
 import SignIn from "./pages/signIn/SignIn";
 import { RequireAuth } from "react-auth-kit";
 import Products from "./pages/products/Products";
+import Home from "./pages/home/Home";
 
 const signInPath = "/sign-in";
 
@@ -67,6 +68,14 @@ const App = () => {
                 element={
                     <AuthenticatedLayout>
                         <Products />
+                    </AuthenticatedLayout>
+                }
+            />
+            <Route
+                path="home"
+                element={
+                    <AuthenticatedLayout>
+                        <Home />
                     </AuthenticatedLayout>
                 }
             />

@@ -7,6 +7,10 @@ const Sidebar = () => {
             label: "Products",
             href: "/products",
         },
+        {
+            label: "Home",
+            href: "/home",
+        },
     ];
 
     return (
