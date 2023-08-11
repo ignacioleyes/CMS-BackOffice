@@ -1,34 +1,37 @@
 import {
+    InputProps,
     FormControl,
-    FormErrorMessage,
     FormLabel,
     Input,
-    InputProps,
+    FormErrorMessage,
 } from "@chakra-ui/react";
 
 interface Props extends InputProps {
     label: string;
     error?: string;
     touched?: boolean;
-    readonly?: boolean
+    isRequired?: boolean;
+    readonly?: boolean;
 }
 
-const FormikField = ({
-    label, error, touched, readonly, ...rest
-}: Props) => {
+const FormikInput = (props: Props) => {
+    const { label, error, touched, readonly, isRequired, ...rest } = props;
     return (
-        <FormControl isInvalid={Boolean(error) && touched}>
-            <FormLabel htmlFor={rest.name}>{label}</FormLabel>
+        <FormControl
+            isRequired={isRequired}
+            isInvalid={Boolean(error) && touched}
+        >
+            <FormLabel htmlFor={props.name}>{label}</FormLabel>
             <Input
-            borderColor={"gray.300"}
-                bgColor={readonly ? "gray.100" : "white"}
-                color={"black"}
                 {...rest}
+                id={props.id ? props.id : props.name}
                 readOnly={readonly}
                 cursor={readonly ? "not-allowed" : "auto"}
+                bgColor={readonly ? "gray.100" : "white"}
             />
             <FormErrorMessage>{error}</FormErrorMessage>
         </FormControl>
     );
 };
-export default FormikField;
+
+export default FormikInput;

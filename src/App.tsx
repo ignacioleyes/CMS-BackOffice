@@ -6,8 +6,8 @@ import Sidebar from "./components/Sidebar";
 import SignIn from "./pages/signIn/SignIn";
 import { RequireAuth } from "react-auth-kit";
 import Products from "./pages/products/Products";
-import Home from "./pages/home/Home";
 import Contact from "./pages/contact/Contact";
+import HomeTabsView from "./pages/home/HomeTabsView";
 
 const signInPath = "/sign-in";
 
@@ -44,7 +44,7 @@ const AuthenticatedLayout = ({ children }: Props) => {
                         <Navbar />
                     )}
                 </Flex>
-                <Box gridColumn="2 / span 2" h="calc(100vh - 64px)" p="5">
+                <Box gridColumn="2 / span 2" h="calc(100vh - 64px)" mt={5}>
                     {children}
                 </Box>
             </Grid>
@@ -60,7 +60,7 @@ const App = () => {
                 path="/"
                 element={
                     <AuthenticatedLayout>
-                        <Home />
+                        <HomeTabsView />
                     </AuthenticatedLayout>
                 }
             />

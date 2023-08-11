@@ -1,4 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+export interface KeyValuePair {
+    [key: string]: any;
+}
 export interface Sort {
     field: string;
     isAscending: boolean;
@@ -22,7 +26,6 @@ export interface ApplicationUser {
     email: string;
     userType: UserType;
 }
-
 export interface AuthResponse {
     authToken: {
         token: string;
@@ -35,7 +38,6 @@ export interface AuthResponse {
         description: string;
     };
 }
-
 export interface ApiListResponse<T> {
     items: T[];
     totalCount: number;
@@ -43,4 +45,10 @@ export interface ApiListResponse<T> {
 
 export enum UserType {
     Admin,
+}
+
+export interface Home {
+    images: string[];
+    title: string;
+    description: string[];
 }
