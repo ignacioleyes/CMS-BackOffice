@@ -4,11 +4,16 @@ import { useQuery } from "@tanstack/react-query";
 import { getResource } from "../../api/api";
 import { Home } from "../../api/types";
 import { useAuthHeader } from "react-auth-kit";
+import Loading from "../../components/Loading";
 
-const HomeView = () => {
+interface Props {
+    tabIndex: number;
+}
+
+const HomeView = ({tabIndex}: Props) => {
     const getAuthHeader = useAuthHeader();
 
-    const { data: homeInfo, isSuccess } = useQuery(
+    const { data: homeInfo, isSuccess, isLoading } = useQuery(
         ["home"],
         () => getResource<Home>("/home", getAuthHeader()),
         { select: (r) => r.data }
@@ -25,7 +30,8 @@ const HomeView = () => {
                     Administrar Contenido de la Página Principal
                 </Heading>
             </Flex>
-            {isSuccess && <HomeForm data={homeInfo} />}
+            {isSuccess && <HomeForm data={homeInfo} tabIndex={tabIndex} />}
+            {isLoading && <Loading />}
         </Box>
     );
 };

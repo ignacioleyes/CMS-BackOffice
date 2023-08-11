@@ -19,6 +19,11 @@ export enum AlternativeOperators {
     StringContains = 1,
     DateTime,
 }
+export interface PatchDocumentItem {
+    op: string;
+    path: string;
+    value: any;
+}
 export interface ApplicationUser {
     id: string;
     firstName: string;
@@ -50,5 +55,7 @@ export enum UserType {
 export interface Home {
     images: string[];
     title: string;
+    englishTitle: string;
     description: string[];
+    englishDescription: string[];
 }

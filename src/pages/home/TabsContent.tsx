@@ -19,11 +19,10 @@ const TabsContent = ({ tabIndex, setTabIndex }: Props) => {
                 borderStyle={"solid"}
             >
                 <TabPanel w={"full"}>
-                    <HomeView />
+                    <HomeView tabIndex={tabIndex} />
                 </TabPanel>
-
                 <TabPanel w={"full"}>
-                    <HomeView />
+                    <HomeView tabIndex={tabIndex}/>
                 </TabPanel>
             </TabPanels>
         </Tabs>

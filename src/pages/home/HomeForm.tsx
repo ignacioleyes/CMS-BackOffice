@@ -9,9 +9,9 @@ import {
 // import * as Yup from "yup";
 import { useFormik } from "formik";
 import { AxiosError } from "axios";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import FormikField from "../../components/FormikField";
-import { postResource } from "../../api/api";
+import { patchResource } from "../../api/api";
 import { useAuthHeader } from "react-auth-kit";
 import ImagesField from "./ImagesField";
 import DescriptionsField from "./DescriptionsField";
@@ -19,17 +19,21 @@ import { Home } from "../../api/types";
 
 interface Props {
     data: Home;
+    tabIndex: number;
 }
 
 const initialValues = {
     images: [],
     title: "",
+    englishTitle: "",
     description: [],
+    englishDescription: [],
 };
 
-const ContactForm = ({data}: Props) => {
+const ContactForm = ({data, tabIndex}: Props) => {
     const getAuthHeader = useAuthHeader();
     const toast = useToast();
+    const queryClient = useQueryClient();
 
     // const validationSchema = Yup.object().shape({
     //     images: Yup.string().nullable(),
@@ -47,6 +51,7 @@ const ContactForm = ({data}: Props) => {
     });
 
     const onSuccess = () => {
+        queryClient.resetQueries(["home"]);
         toast({
             title: "Actualización Exitosa",
             status: "success",
@@ -64,7 +69,7 @@ const ContactForm = ({data}: Props) => {
     };
 
     const { mutateAsync: home, isLoading } = useMutation(
-        () => postResource("home", getAuthHeader(), formik.values),
+        () => patchResource("home", 1, getAuthHeader(), data, formik.values),
         {
             onSuccess: onSuccess,
             onError: onError,
@@ -101,7 +106,7 @@ const ContactForm = ({data}: Props) => {
                             name="title"
                             id="title"
                             // isRequired={true}
-                            value={formik.values.title}
+                            value={tabIndex === 0 ? formik.values.title : formik.values.englishTitle}
                             onChange={formik.handleChange}
                             error={formik.errors.title}
                             touched={formik.touched.title}
@@ -110,9 +115,9 @@ const ContactForm = ({data}: Props) => {
                     </Box>
                     <Box>
                         <DescriptionsField
-                            values={formik.values.description}
+                            values={tabIndex === 0 ? formik.values.description : formik.values.englishDescription}
                             setter={(values: string[]) =>
-                                formik.setFieldValue("description", values)
+                                formik.setFieldValue(tabIndex === 0 ? "description" : "englishDescription", values)
                             }
                         />
                     </Box>
