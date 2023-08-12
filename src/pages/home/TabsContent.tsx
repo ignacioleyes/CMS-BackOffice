@@ -11,6 +11,7 @@ const TabsContent = ({ tabIndex, setTabIndex }: Props) => {
         <Tabs index={tabIndex} onChange={setTabIndex} w={"full"}>
             <TabPanels
                 bgColor={"lightgray"}
+                borderTopLeftRadius={tabIndex !== 0 ? "0.5rem" : "0rem"}
                 borderTopRightRadius={"1rem"}
                 borderBottomLeftRadius={"1rem"}
                 borderBottomRightRadius={"1rem"}

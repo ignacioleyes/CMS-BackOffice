@@ -6,7 +6,7 @@ import Sidebar from "./components/Sidebar";
 import SignIn from "./pages/signIn/SignIn";
 import { RequireAuth } from "react-auth-kit";
 import Products from "./pages/products/Products";
-import Contact from "./pages/contact/Contact";
+import Contacts from "./pages/contact/Contacts";
 import HomeTabsView from "./pages/home/HomeTabsView";
 
 const signInPath = "/sign-in";
@@ -76,7 +76,7 @@ const App = () => {
                 path="/contacts"
                 element={
                     <AuthenticatedLayout>
-                        <Contact />
+                        <Contacts />
                     </AuthenticatedLayout>
                 }
             />

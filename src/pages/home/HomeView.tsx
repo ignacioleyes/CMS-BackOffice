@@ -18,6 +18,7 @@ const HomeView = ({tabIndex}: Props) => {
         () => getResource<Home>("/home", getAuthHeader()),
         { select: (r) => r.data }
     );
+    
     return (
         <Box>
             <Flex

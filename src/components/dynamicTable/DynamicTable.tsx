@@ -93,7 +93,7 @@ const DynamicTable = ({
                     borderRadius: "1.25rem"
                 }}
             >
-                <Thead bgColor={"#297FFF"}>
+                <Thead bgColor={"secondary"}>
                     <Tr>
                         {format.map((f, _i) => (
                             <Th
@@ -123,7 +123,7 @@ const DynamicTable = ({
                 </Thead>
                 <Tbody
                     bgColor={"whitesmoke"}
-                    color="tertiary"
+                    color="secondary"
                 >
                     {!data.length && (
                         <Tr>

@@ -43,7 +43,7 @@ const MainLayout = ({
     const getAuthHeader = useAuthHeader();
     const [currentPage, setCurrentPage] = useState(0);
     const [sort, setSort] = useState<Sort>({
-        field: "createdAt",
+        field: "id",
         isAscending: false,
     });
 

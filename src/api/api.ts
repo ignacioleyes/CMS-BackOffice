@@ -56,6 +56,16 @@ export const patchResource = async (
     });
 };
 
+export const deleteResource = async (
+    resource: string,
+    id: number,
+    authHeader: string
+) => {
+    return await client.delete(`/${resource}/${id}`, {
+        headers: { Authorization: authHeader },
+    });
+};
+
 const keyValueToPatchDocumentItem = (
     key: string,
     value: any

@@ -59,3 +59,11 @@ export interface Home {
     description: string[];
     englishDescription: string[];
 }
+
+export interface Contact {
+    id: number;
+    name: string;
+    company: string;
+    email: string;
+    message: string;
+}
