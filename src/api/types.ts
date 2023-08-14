@@ -67,3 +67,25 @@ export interface Contact {
     email: string;
     message: string;
 }
+
+export interface Product {
+    id: number;
+    name: string;
+    englishName: string;
+    description: string;
+    englishDescription: string;
+    brand: BrandEnum;
+    characteristics: string;
+    englishCharacteristics: string;
+    price: number;
+    productImage: string;
+    certificationsImage: string;
+    characteristicsImages: string[];
+    tablesImage: string;
+    alternatives: string;
+    englishAlternatives: string;
+}
+
+export enum BrandEnum {
+    Test,
+}

@@ -1,4 +1,4 @@
-import {Contact } from "../../api/types";
+import { Contact } from "../../api/types";
 import { DynamicTableCellFormat } from "../../components/dynamicTable/DynamicTable";
 import MainLayout from "../../components/MainLayout";
 import DeleteContactCell from "./DeleteContactCell";
@@ -31,7 +31,7 @@ const format: DynamicTableCellFormat<Contact>[] = [
     },
 ];
 
-const Products = () => {
+const Contacts = () => {
     return (
         <MainLayout
             resource={"contacts"}
@@ -43,4 +43,4 @@ const Products = () => {
     );
 };
 
-export default Products;
+export default Contacts;

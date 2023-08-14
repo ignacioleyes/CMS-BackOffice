@@ -1,11 +1,11 @@
 import { Box, VStack } from "@chakra-ui/react";
 import { useState } from "react";
-import TabsSelector from "./TabsSelector";
 import TabsContent from "./TabsContent";
+import TabsSelector from "../home/TabsSelector";
 
-const HomeTabsView = () => {
+const ProductsTabsView = () => {
     const [tabIndex, setTabIndex] = useState(
-        +localStorage.getItem("homeTabIndex")!
+        +localStorage.getItem("productsTabIndex")!
     );
 
     return (
@@ -26,4 +26,4 @@ const HomeTabsView = () => {
     );
 };
 
-export default HomeTabsView;
+export default ProductsTabsView;

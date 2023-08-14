@@ -5,9 +5,9 @@ import Navbar from "./components/navbar/Navbar";
 import Sidebar from "./components/Sidebar";
 import SignIn from "./pages/signIn/SignIn";
 import { RequireAuth } from "react-auth-kit";
-import Products from "./pages/products/Products";
 import Contacts from "./pages/contact/Contacts";
 import HomeTabsView from "./pages/home/HomeTabsView";
+import ProductsTabsView from "./pages/products/ProductsTabsView";
 
 const signInPath = "/sign-in";
 
@@ -68,7 +68,7 @@ const App = () => {
                 path="/products"
                 element={
                     <AuthenticatedLayout>
-                        <Products />
+                        <ProductsTabsView />
                     </AuthenticatedLayout>
                 }
             />
