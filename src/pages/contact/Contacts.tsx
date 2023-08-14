@@ -1,3 +1,4 @@
+import moment from "moment";
 import { Contact } from "../../api/types";
 import { DynamicTableCellFormat } from "../../components/dynamicTable/DynamicTable";
 import MainLayout from "../../components/MainLayout";
@@ -22,6 +23,12 @@ const format: DynamicTableCellFormat<Contact>[] = [
     {
         header: "Mensaje",
         accessor: "message",
+        isSortable: true,
+    },
+    {
+        header: "Fecha de creación",
+        accessor: "creationDate",
+        accessorFn: (cell) => moment.utc(cell.row.creationDate).format("DD-MM-yyyy"),
         isSortable: true,
     },
     {

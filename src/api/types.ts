@@ -66,6 +66,7 @@ export interface Contact {
     company: string;
     email: string;
     message: string;
+    creationDate: string;
 }
 
 export interface Product {
