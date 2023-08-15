@@ -5,7 +5,7 @@ const commonTabProps = {
     minWidth: "10vw",
     _selected: {
         color: "secondary",
-        bgColor: "lightgray",
+        bgColor: "#ede7d7",
     },
     boxShadow: "none !important",
 };

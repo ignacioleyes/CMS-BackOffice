@@ -10,14 +10,12 @@ const TabsContent = ({ tabIndex, setTabIndex }: Props) => {
     return (
         <Tabs index={tabIndex} onChange={setTabIndex} w={"full"}>
             <TabPanels
-                bgColor={"lightgray"}
-                borderTopLeftRadius={tabIndex !== 0 ? "0.5rem" : "0rem"}
-                borderTopRightRadius={"1rem"}
-                borderBottomLeftRadius={"1rem"}
-                borderBottomRightRadius={"1rem"}
-                borderWidth={1}
-                borderColor={"lightgray"}
-                borderStyle={"solid"}
+                 bgColor={"#ede7d7"}
+                 borderTopLeftRadius={tabIndex !== 0 ? "0.5rem" : "0rem"}
+                 borderTopRightRadius={"1rem"}
+                 borderBottomLeftRadius={"1rem"}
+                 borderBottomRightRadius={"1rem"}
+                 borderStyle={"solid"}
             >
                 <TabPanel w={"full"}>
                     <ProductsView tabIndex={tabIndex} />

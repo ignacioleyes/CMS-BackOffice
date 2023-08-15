@@ -16,7 +16,7 @@ const ProductsView = ({tabIndex}: Props) => {
                 height={"5rem"}
             >
                 <Heading textAlign={"center"} color={"secondary"}>
-                    Products
+                    Administrar Productos
                 </Heading>
             </Flex>
             <Products tabIndex={tabIndex} />
