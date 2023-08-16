@@ -3,7 +3,7 @@ import { AxiosError } from "axios";
 import { useSignIn } from "react-auth-kit";
 import { useNavigate } from "react-router-dom";
 import { AuthResponse } from "../api/types";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from "react-query";
 import { client } from "../api/config";
 
 export const useSignInMutation = (email: string, password: string) => {

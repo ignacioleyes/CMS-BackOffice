@@ -87,6 +87,23 @@ export interface Product {
     englishAlternatives: string;
 }
 
+export interface ProductCreation {
+    name: string;
+    englishName: string;
+    description: string;
+    englishDescription: string;
+    brand: BrandEnum;
+    characteristics: string;
+    englishCharacteristics: string;
+    price: number;
+    productImage: string;
+    certificationsImage: string;
+    characteristicsImages: string[];
+    tablesImage: string;
+    alternatives: string;
+    englishAlternatives: string;
+}
+
 export enum BrandEnum {
     Test,
 }

@@ -1,6 +1,6 @@
 import { Heading, Flex, Box } from "@chakra-ui/react";
 import HomeForm from "./HomeForm";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "react-query";
 import { getResource } from "../../api/api";
 import { Home } from "../../api/types";
 import { useAuthHeader } from "react-auth-kit";

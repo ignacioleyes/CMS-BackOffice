@@ -16,7 +16,7 @@ import {
     filtersToAPIFormat,
     sortToAPISort,
 } from "../api/utils";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "react-query";
 import DynamicTable, {
     DynamicTableCellFormat,
 } from "./dynamicTable/DynamicTable";

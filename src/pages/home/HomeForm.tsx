@@ -9,7 +9,7 @@ import {
 // import * as Yup from "yup";
 import { useFormik } from "formik";
 import { AxiosError } from "axios";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "react-query";
 import FormikField from "../../components/FormikField";
 import { patchResource } from "../../api/api";
 import { useAuthHeader } from "react-auth-kit";

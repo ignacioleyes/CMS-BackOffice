@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Img } from "@chakra-ui/react";
 import { BrandEnum, Product } from "../../api/types";
 import { DynamicTableCellFormat } from "../../components/dynamicTable/DynamicTable";
 import MainLayout from "../../components/MainLayout";
 import DeleteProductCell from "./DeleteProductCell";
+import ProductCreationModal from "./ProductCreationModal";
 
 interface Props {
     tabIndex: number;
@@ -18,6 +20,15 @@ const Products = ({ tabIndex }:Props) => {
                 header: "Imagen",
                 accessor: "productImage",
                 isSortable: false,
+                accessorFn: (cell) =>
+                cell.row.productImage && (
+                    <Img
+                        w="5rem"
+                        src={cell.row.productImage}
+                        alt={cell.row.name}
+                        rounded="lg"
+                    />
+                ),
             },
             {
                 header: "Nombre",
@@ -110,6 +121,7 @@ const Products = ({ tabIndex }:Props) => {
             filters={<></>}
             queryFilters={[]}
             perPage={7}
+            buttons={<ProductCreationModal />}
         />
     );
 };
