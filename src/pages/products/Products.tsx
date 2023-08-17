@@ -19,7 +19,6 @@ const Products = ({ tabIndex }:Props) => {
             {
                 header: "Imagen",
                 accessor: "productImage",
-                isSortable: false,
                 accessorFn: (cell) =>
                 cell.row.productImage && (
                     <Img
@@ -29,6 +28,7 @@ const Products = ({ tabIndex }:Props) => {
                         rounded="lg"
                     />
                 ),
+                isSortable: false,
             },
             {
                 header: "Nombre",
@@ -73,6 +73,15 @@ const Products = ({ tabIndex }:Props) => {
             {
                 header: "Imagen",
                 accessor: "productImage",
+                accessorFn: (cell) =>
+                cell.row.productImage && (
+                    <Img
+                        w="5rem"
+                        src={cell.row.productImage}
+                        alt={cell.row.name}
+                        rounded="lg"
+                    />
+                ),
                 isSortable: false,
             },
             {
