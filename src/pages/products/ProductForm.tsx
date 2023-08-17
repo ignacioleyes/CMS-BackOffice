@@ -23,8 +23,12 @@ const validationSchema = Yup.object().shape({
     englishCharacteristics: Yup.string().nullable(),
     price: Yup.number().required("Precio requerido"),
     productImage: Yup.string().required("Imágen de producto requerida"),
-    certificationsImage: Yup.string().required("Imágen de certificados requerida"),
-    characteristicsImages: Yup.array().required("Imágen de caracteristicas requerida"),
+    certificationsImage: Yup.string().required(
+        "Imágen de certificados requerida"
+    ),
+    characteristicsImages: Yup.array().required(
+        "Imágen de caracteristicas requerida"
+    ),
     tablesImage: Yup.string().required("Imágen de tabla requerida"),
     alternatives: Yup.string().nullable(),
     englishAlternatives: Yup.string().nullable(),
@@ -45,7 +49,12 @@ const ProductForm = ({
     });
 
     return (
-        <chakra.form onSubmit={formik.handleSubmit} w="full" pb={5} fontSize={"lg"}>
+        <chakra.form
+            onSubmit={formik.handleSubmit}
+            w="full"
+            pb={5}
+            fontSize={"lg"}
+        >
             <VStack spacing={5} w="full">
                 <FormikField
                     label="Nombre"
@@ -128,7 +137,8 @@ const ProductForm = ({
                     value={formik.values.price}
                     type="number"
                 />
-                {//BRAND FIELD
+                {
+                    //BRAND FIELD
                 }
                 <FormikField
                     label="Precio"
@@ -149,14 +159,25 @@ const ProductForm = ({
                 <FileInput
                     value={formik.values.certificationsImage ?? null}
                     setter={(certificationsImage: string) =>
-                        formik.setFieldValue("certificationsImage", certificationsImage, true)
+                        formik.setFieldValue(
+                            "certificationsImage",
+                            certificationsImage,
+                            true
+                        )
                     }
                     label="Imagen de certificaciones"
                 />
                 <MultiFileInput
+                    label="Imagenes"
+                    name="characteristicsImages"
+                    error={formik.errors.characteristicsImages}
                     values={formik.values.characteristicsImages ?? null}
                     setter={(characteristicsImages: string[]) =>
-                        formik.setFieldValue("characteristicsImages", characteristicsImages, true)
+                        formik.setFieldValue(
+                            "characteristicsImages",
+                            characteristicsImages,
+                            true
+                        )
                     }
                 />
                 <FileInput

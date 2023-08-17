@@ -10,6 +10,7 @@ interface Props {
 
 const FileInput = ({ value, setter, label }: Props) => {
     const ref = useRef<HTMLInputElement>(null);
+    
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
