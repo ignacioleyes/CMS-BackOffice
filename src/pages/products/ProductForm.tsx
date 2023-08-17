@@ -144,12 +144,14 @@ const ProductForm = ({
                     setter={(productImage: string) =>
                         formik.setFieldValue("productImage", productImage, true)
                     }
+                    label="Imagen del producto"
                 />
                 <FileInput
                     value={formik.values.certificationsImage ?? null}
                     setter={(certificationsImage: string) =>
                         formik.setFieldValue("certificationsImage", certificationsImage, true)
                     }
+                    label="Imagen de certificaciones"
                 />
                 <MultiFileInput
                     values={formik.values.characteristicsImages ?? null}
@@ -162,6 +164,7 @@ const ProductForm = ({
                     setter={(tablesImage: string) =>
                         formik.setFieldValue("tablesImage", tablesImage, true)
                     }
+                    label="Imagen de tablas"
                 />
                 <Button
                     type="submit"

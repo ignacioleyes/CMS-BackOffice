@@ -5,9 +5,10 @@ import LabeledComponent from "../../components/LabeledComponent";
 interface Props {
     value: string | null;
     setter: (value: string) => void;
+    label: string;
 }
 
-const FileInput = ({ value, setter }: Props) => {
+const FileInput = ({ value, setter, label }: Props) => {
     const ref = useRef<HTMLInputElement>(null);
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -22,7 +23,7 @@ const FileInput = ({ value, setter }: Props) => {
 
     return (
         <LabeledComponent
-            label="Imagen"
+            label={label}
             name="picture"
             component={
                 <HStack w="full">
