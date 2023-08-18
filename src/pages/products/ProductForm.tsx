@@ -170,7 +170,6 @@ const ProductForm = ({
                 <MultiFileInput
                     label="Imagenes"
                     name="characteristicsImages"
-                    error={formik.errors.characteristicsImages}
                     values={formik.values.characteristicsImages ?? null}
                     setter={(characteristicsImages: string[]) =>
                         formik.setFieldValue(
