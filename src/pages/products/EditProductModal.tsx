@@ -1,5 +1,4 @@
 import {
-    IconButton,
     Modal,
     ModalBody,
     ModalCloseButton,
@@ -7,14 +6,15 @@ import {
     ModalHeader,
     ModalOverlay,
     useDisclosure,
+    Image,
 } from "@chakra-ui/react";
 import { useAuthHeader } from "react-auth-kit";
-import { MdModeEditOutline } from "react-icons/md";
 import { useQueryClient, useMutation } from "react-query";
 import { Product, ProductCreation } from "../../api/types";
 import { useSuccessToast, useErrorToast } from "../../hooks/toasts";
 import ProductForm from "./ProductForm";
 import { client } from "../../api/config";
+import EditIcon from "../../assets/images/edit.png";
 
 interface Props {
     product: Product;
@@ -53,11 +53,11 @@ const EditProductModal = ({ product }: Props) => {
 
     return (
         <>
-            <IconButton
-                bgColor={"primary"}
+            <Image
+                width={"2rem"}
+                src={EditIcon}
+                cursor={"pointer"}
                 onClick={onOpen}
-                icon={<MdModeEditOutline />}
-                aria-label="Editar producto"
             />
 
             <Modal
@@ -67,7 +67,10 @@ const EditProductModal = ({ product }: Props) => {
                 size="6xl"
             >
                 <ModalOverlay />
-                <ModalContent minW={{md: "fit-content",lg: "65rem", xl: "80rem"}} bgColor={"lightgray"}>
+                <ModalContent
+                    minW={{ md: "fit-content", lg: "65rem", xl: "80rem" }}
+                    bgColor={"lightgray"}
+                >
                     <ModalHeader>Editar producto</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>

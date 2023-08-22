@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { BrandEnum, ProductCreation } from "../../api/types";
 import * as Yup from "yup";
 import { useFormik } from "formik";
