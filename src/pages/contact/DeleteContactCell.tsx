@@ -11,7 +11,7 @@ import {
     useDisclosure,
     useToast,
 } from "@chakra-ui/react";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { useRef } from "react";
 import { useAuthHeader } from "react-auth-kit";
 import { deleteResource } from "../../api/api";

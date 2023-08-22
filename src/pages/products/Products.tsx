@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { HStack, Img } from "@chakra-ui/react";
 import { BrandEnum, Product } from "../../api/types";
 import { DynamicTableCellFormat } from "../../components/dynamicTable/DynamicTable";
 import MainLayout from "../../components/MainLayout";
 import DeleteProductCell from "./DeleteProductCell";
+import ProductCreationModal from "./ProductCreationModal";
+import EditProductModal from "./EditProductModal";
 
 interface Props {
     tabIndex: number;
@@ -17,22 +20,32 @@ const Products = ({ tabIndex }:Props) => {
             {
                 header: "Imagen",
                 accessor: "productImage",
+                accessorFn: (cell) =>
+                cell.row.productImage && (
+                    <Img
+                        w="12rem"
+                        src={cell.row.productImage}
+                        alt={cell.row.name}  
+                    />
+                ),
                 isSortable: false,
             },
             {
                 header: "Nombre",
                 accessor: "name",
+                accessorFn: (cell) => cell.row.name.length > 50 ? cell.row.name.substring(0, 50) + '...' : cell.row.name,
                 isSortable: true,
             },
             {
                 header: "Descripción",
                 accessor: "description",
+                accessorFn: (cell) => cell.row.description.length > 50 ? cell.row.description.substring(0, 50) + '...' : cell.row.description,
                 isSortable: false,
             },
             {
                 header: "Marca",
                 accessor: "brand",
-                accessorFn: (brand: any) => BrandEnum[brand],
+                accessorFn: (cell) => `${BrandEnum[cell.row.brand]}`,
                 isSortable: true,
             },
             {
@@ -43,17 +56,24 @@ const Products = ({ tabIndex }:Props) => {
             {
                 header: "Caraterísticas",
                 accessor: "characteristics",
+                accessorFn: (cell) => cell.row.characteristics.length > 50 ? cell.row.characteristics.substring(0, 50) + '...' : cell.row.characteristics,
                 isSortable: false,
             },
             {
                 header: "Alternativas",
                 accessor: "alternatives",
+                accessorFn: (cell) => cell.row.alternatives.length > 50 ? cell.row.alternatives.substring(0, 50) + '...' : cell.row.alternatives,
                 isSortable: false,
             },
             {
-                header: "",
+                header: "Editar/Eliminar",
                 accessor: "",
-                accessorFn: (cell) => <DeleteProductCell id={cell.row.id} />,
+                accessorFn: (cell) => (
+                    <HStack spacing={2}>
+                        <EditProductModal product={cell.row} />
+                        <DeleteProductCell id={cell.row.id} />
+                    </HStack>
+                ),
             },
         ]
     }
@@ -62,22 +82,32 @@ const Products = ({ tabIndex }:Props) => {
             {
                 header: "Imagen",
                 accessor: "productImage",
+                accessorFn: (cell) =>
+                cell.row.productImage && (
+                    <Img
+                        w="12rem"
+                        src={cell.row.productImage}
+                        alt={cell.row.name}
+                    />
+                ),
                 isSortable: false,
             },
             {
                 header: "Nombre",
                 accessor: "englishName",
+                accessorFn: (cell) => cell.row.englishName.length > 50 ? cell.row.englishName.substring(0, 50) + '...' : cell.row.englishName,
                 isSortable: true,
             },
             {
                 header: "Descripción",
                 accessor: "englishDescription",
+                accessorFn: (cell) => cell.row.englishDescription.length > 50 ? cell.row.englishDescription.substring(0, 50) + '...' : cell.row.englishDescription,
                 isSortable: false,
             },
             {
                 header: "Marca",
                 accessor: "brand",
-                accessorFn: (brand: any) => BrandEnum[brand],
+                accessorFn: (cell) => `${BrandEnum[cell.row.brand]}`,
                 isSortable: true,
             },
             {
@@ -88,17 +118,24 @@ const Products = ({ tabIndex }:Props) => {
             {
                 header: "Caraterísticas",
                 accessor: "englishCharacteristics",
+                accessorFn: (cell) => cell.row.englishCharacteristics.length > 50 ? cell.row.englishCharacteristics.substring(0, 50) + '...' : cell.row.englishCharacteristics,
                 isSortable: false,
             },
             {
                 header: "Alternativas",
                 accessor: "englishAlternatives",
+                accessorFn: (cell) => cell.row.englishAlternatives.length > 50 ? cell.row.englishAlternatives.substring(0, 50) + '...' : cell.row.englishAlternatives,
                 isSortable: false,
             },
             {
-                header: "",
+                header: "Editar/Eliminar",
                 accessor: "",
-                accessorFn: (cell) => <DeleteProductCell id={cell.row.id} />,
+                accessorFn: (cell) => (
+                    <HStack spacing={2}>
+                        <EditProductModal product={cell.row} />
+                        <DeleteProductCell id={cell.row.id} />
+                    </HStack>
+                ),
             },
         ]
     }
@@ -109,7 +146,8 @@ const Products = ({ tabIndex }:Props) => {
             format={format}
             filters={<></>}
             queryFilters={[]}
-            perPage={7}
+            perPage={4}
+            buttons={<ProductCreationModal />}
         />
     );
 };
