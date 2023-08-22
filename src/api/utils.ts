@@ -22,3 +22,11 @@ export const sortToAPISort = (sort: Sort) => {
         "sort.IsAscending": sort.isAscending,
     };
 };
+
+export const getOptionsFromEnum = (enumObject: any) => {
+    const keyValues = Object.entries(enumObject).filter((x: any) => !isNaN(x[1]));
+    return keyValues.map((option) => ({
+      label: option[0],
+      value: Number(option[1]),
+    }));
+};

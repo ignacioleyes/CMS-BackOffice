@@ -1,5 +1,5 @@
 import {
-    Button,
+    IconButton,
     Modal,
     ModalBody,
     ModalCloseButton,
@@ -9,14 +9,18 @@ import {
     useDisclosure,
 } from "@chakra-ui/react";
 import { useAuthHeader } from "react-auth-kit";
-import { AiOutlinePlus } from "react-icons/ai";
+import { MdModeEditOutline } from "react-icons/md";
+import { useQueryClient, useMutation } from "react-query";
+import { Product, ProductCreation } from "../../api/types";
 import { useSuccessToast, useErrorToast } from "../../hooks/toasts";
 import ProductForm from "./ProductForm";
-import { BrandEnum, ProductCreation } from "../../api/types";
-import { useMutation, useQueryClient } from "react-query";
 import { client } from "../../api/config";
 
-const ProductCreationModal = () => {
+interface Props {
+    product: Product;
+}
+
+const EditProductModal = ({ product }: Props) => {
     const queryClient = useQueryClient();
     const successToast = useSuccessToast();
     const errorToast = useErrorToast();
@@ -24,9 +28,9 @@ const ProductCreationModal = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const getAuthHeader = useAuthHeader();
 
-    const { mutateAsync: createProduct, isLoading } = useMutation(
+    const { mutateAsync: editProduct, isLoading } = useMutation(
         (values: ProductCreation) =>
-            client.post("/products", values, {
+            client.put(`/products/${product.id}`, values, {
                 headers: {
                     Authorization: getAuthHeader(),
                 },
@@ -34,13 +38,13 @@ const ProductCreationModal = () => {
         {
             onSuccess: () => {
                 queryClient.resetQueries("products");
-                successToast("Producto creado correctamente");
+                successToast("Producto editado correctamente");
                 onClose();
             },
             onError: (err: string) => {
                 console.log(err);
                 errorToast(
-                    "Error al crear producto",
+                    "Error al editar producto",
                     "Intente de nuevo más tarde"
                 );
             },
@@ -49,13 +53,12 @@ const ProductCreationModal = () => {
 
     return (
         <>
-            <Button
-                colorScheme="green"
+            <IconButton
+                bgColor={"primary"}
                 onClick={onOpen}
-                leftIcon={<AiOutlinePlus />}
-            >
-                AÑADIR
-            </Button>
+                icon={<MdModeEditOutline />}
+                aria-label="Editar producto"
+            />
 
             <Modal
                 trapFocus={false}
@@ -65,29 +68,14 @@ const ProductCreationModal = () => {
             >
                 <ModalOverlay />
                 <ModalContent minW={{md: "fit-content",lg: "65rem", xl: "80rem"}} bgColor={"lightgray"}>
-                    <ModalHeader>Crear producto</ModalHeader>
+                    <ModalHeader>Editar producto</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                         <ProductForm
-                            runMutation={createProduct}
+                            runMutation={editProduct}
                             isLoading={isLoading}
-                            type="create"
-                            initialValues={{
-                                name: "",
-                                englishName: "",
-                                description: "",
-                                englishDescription: "",
-                                brand: "" as unknown as BrandEnum,
-                                characteristics: "",
-                                englishCharacteristics: "",
-                                price: 0,
-                                productImage: "",
-                                certificationsImage: "",
-                                characteristicsImages: [],
-                                tablesImage: "",
-                                alternatives: "",
-                                englishAlternatives: "",
-                            }}
+                            type="edit"
+                            initialValues={product}
                         />
                     </ModalBody>
                 </ModalContent>
@@ -96,4 +84,4 @@ const ProductCreationModal = () => {
     );
 };
 
-export default ProductCreationModal;
+export default EditProductModal;

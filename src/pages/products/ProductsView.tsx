@@ -13,7 +13,6 @@ const ProductsView = ({tabIndex}: Props) => {
                 justifyContent={"center"}
                 alignItems={"center"}
                 width={"100%"}
-                height={"5rem"}
             >
                 <Heading textAlign={"center"} color={"secondary"}>
                     Administrar Productos

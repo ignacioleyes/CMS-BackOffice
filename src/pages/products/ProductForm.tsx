@@ -1,10 +1,12 @@
-import { ProductCreation } from "../../api/types";
+import { BrandEnum, ProductCreation } from "../../api/types";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { Button, chakra, VStack } from "@chakra-ui/react";
 import FormikField from "../../components/FormikField";
 import FileInput from "./FileInput";
 import MultiFileInput from "./MultiFileInput";
+import { getOptionsFromEnum } from "../../api/utils";
+import LabeledReactSelectInput from "../../components/LabeledReactSelectInput";
 
 interface Props {
     runMutation: (values: ProductCreation) => void;
@@ -137,18 +139,19 @@ const ProductForm = ({
                     value={formik.values.price}
                     type="number"
                 />
-                {
-                    //BRAND FIELD
-                }
-                <FormikField
-                    label="Precio"
-                    name="price"
-                    error={formik.errors.price}
-                    touched={formik.touched.price}
-                    onChange={formik.handleChange}
-                    value={formik.values.price}
-                    type="number"
-                />
+                    <LabeledReactSelectInput
+                        label="Marca"
+                        name="brand"
+                        value={formik.values.brand}
+                        error={formik.errors.brand}
+                        touched={formik.touched.brand}
+                        isClearable={false}
+                        options={getOptionsFromEnum(BrandEnum)}
+                        setter={(value: any) =>
+                            formik.setFieldValue("type", value, true)
+                        }
+                        placeholder=""
+                    />
                 <FileInput
                     value={formik.values.productImage ?? null}
                     setter={(productImage: string) =>
@@ -168,7 +171,7 @@ const ProductForm = ({
                     label="Imagen de certificaciones"
                 />
                 <MultiFileInput
-                    label="Imagenes"
+                    label="Imagenes de caracteristicas"
                     name="characteristicsImages"
                     values={formik.values.characteristicsImages ?? null}
                     setter={(characteristicsImages: string[]) =>
