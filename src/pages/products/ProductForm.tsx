@@ -26,9 +26,6 @@ const validationSchema = Yup.object().shape({
     englishCharacteristics: Yup.string().nullable(),
     price: Yup.number().required("Precio requerido"),
     productImage: Yup.string().required("Imágen de producto requerida"),
-    certificationsImage: Yup.string().required(
-        "Imágen de certificados requerida"
-    ),
     characteristicsImages: Yup.array().required(
         "Imágen de caracteristicas requerida"
     ),
@@ -140,19 +137,19 @@ const ProductForm = ({
                     value={formik.values.price}
                     type="number"
                 />
-                    <LabeledReactSelectInput
-                        label="Marca"
-                        name="brand"
-                        value={formik.values.brand}
-                        error={formik.errors.brand}
-                        touched={formik.touched.brand}
-                        isClearable={false}
-                        options={getOptionsFromEnum(BrandEnum)}
-                        setter={(value: any) =>
-                            formik.setFieldValue("type", value, true)
-                        }
-                        placeholder=""
-                    />
+                <LabeledReactSelectInput
+                    label="Marca"
+                    name="brand"
+                    value={formik.values.brand}
+                    error={formik.errors.brand}
+                    touched={formik.touched.brand}
+                    isClearable={false}
+                    options={getOptionsFromEnum(BrandEnum)}
+                    setter={(value: any) =>
+                        formik.setFieldValue("type", value, true)
+                    }
+                    placeholder=""
+                />
                 <FileInput
                     value={formik.values.productImage ?? null}
                     setter={(productImage: string) =>

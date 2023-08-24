@@ -60,6 +60,7 @@ const DeleteProductCell = ({ id }: Props) => {
                 src={DeleteIcon}
                 cursor={"pointer"}
                 onClick={onOpen}
+                _hover={{ transform: "scale(1.1)" }}
             />
             <AlertDialog
                 isOpen={isOpen}

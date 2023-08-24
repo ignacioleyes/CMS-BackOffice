@@ -58,6 +58,7 @@ const EditProductModal = ({ product }: Props) => {
                 src={EditIcon}
                 cursor={"pointer"}
                 onClick={onOpen}
+                _hover={{ transform: "scale(1.1)" }}
             />
 
             <Modal
