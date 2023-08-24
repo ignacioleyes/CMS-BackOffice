@@ -10,16 +10,19 @@ const Sidebar = () => {
             label: "Inicio",
             href: "/",
             icon: HomeIcon,
+            opacity: location.pathname.includes("products") || location.pathname.includes("contacts") ? 0.3 : 1 
         },
         {
             label: "Productos",
             href: "/products",
             icon: ProductsIcon,
+            opacity: location.pathname.includes("products") ? 1 : 0.3
         },
         {
             label: "Contactos",
             href: "/contacts",
             icon: ContactIcon,
+            opacity: location.pathname.includes("contacts") ? 1 : 0.3
         },
     ];
 
@@ -39,11 +42,11 @@ const Sidebar = () => {
                     <Link to={item.href!} key={idx}>
                         <Box mb={3} mt={3}>
                             <Center>
-                                <Image src={item.icon} width={"3rem"}></Image>
+                                <Image src={item.icon} width={"3rem"} opacity={item.opacity}></Image>
                             </Center>
                         </Box>
                         <Box>
-                            <Center color={"secondary"}>{item.label}</Center>
+                            <Center color={"black"} opacity={item.opacity} fontWeight={"bold"}>{item.label}</Center>
                         </Box>
                     </Link>
                 ))}
