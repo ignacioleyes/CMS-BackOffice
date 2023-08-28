@@ -43,7 +43,7 @@ const LabeledReactSelectInput = ({
                     control: (provided) => ({
                         ...provided,
                         border: "2px solid black",
-                        height: "4rem",
+                        height: "3rem",
                         "&:hover": {
                             border: "2px solid black",
                         },
