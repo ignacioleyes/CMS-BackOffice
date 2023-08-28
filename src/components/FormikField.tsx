@@ -28,7 +28,7 @@ const FormikInput = (props: Props) => {
                 readOnly={readonly}
                 cursor={readonly ? "not-allowed" : "auto"}
                 bgColor={readonly ? "gray.100" : "white"}
-                height={"4rem"}
+                height={"3rem"}
                 border="2px solid black"
                 _hover={{ border: "1px solid black" }}
             />

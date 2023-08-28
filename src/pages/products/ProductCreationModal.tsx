@@ -64,7 +64,7 @@ const ProductCreationModal = () => {
                 size="6xl"
             >
                 <ModalOverlay />
-                <ModalContent minW={{md: "fit-content",lg: "65rem", xl: "80rem"}} bgColor={"lightgray"}>
+                <ModalContent minW={{md: "fit-content",lg: "65rem", xl: "80rem"}} bgColor={"white"}>
                     <ModalHeader>Crear producto</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>

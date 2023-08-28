@@ -70,7 +70,7 @@ const EditProductModal = ({ product }: Props) => {
                 <ModalOverlay />
                 <ModalContent
                     minW={{ md: "fit-content", lg: "65rem", xl: "80rem" }}
-                    bgColor={"lightgray"}
+                    bgColor={"white"}
                 >
                     <ModalHeader>Editar producto</ModalHeader>
                     <ModalCloseButton />
