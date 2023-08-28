@@ -105,5 +105,5 @@ export interface ProductCreation {
 }
 
 export enum BrandEnum {
-    Test,
+    Conduflex,
 }
