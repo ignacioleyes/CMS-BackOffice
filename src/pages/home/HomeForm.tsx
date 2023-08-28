@@ -13,9 +13,9 @@ import { useMutation, useQueryClient } from "react-query";
 import FormikField from "../../components/FormikField";
 import { patchResource } from "../../api/api";
 import { useAuthHeader } from "react-auth-kit";
-import ImagesField from "./ImagesField";
 import DescriptionsField from "./DescriptionsField";
 import { Home } from "../../api/types";
+import MultiFileInput from "../products/MultiFileInput";
 
 interface Props {
     data: Home;
@@ -94,10 +94,16 @@ const ContactForm = ({data, tabIndex}: Props) => {
                     m={2}
                 >
                     <Box mb={5}>
-                        <ImagesField
-                            values={formik.values.images}
-                            setter={(values: string[]) =>
-                                formik.setFieldValue("images", values)
+                        <MultiFileInput
+                            label="Imagenes de la home"
+                            name="images"
+                            values={formik.values.images ?? null}
+                            setter={(images: string[]) =>
+                                formik.setFieldValue(
+                                    "images",
+                                    images,
+                                    true
+                                )
                             }
                         />
                     </Box>
