@@ -176,7 +176,7 @@ const ProductForm = ({
                         placeholder=""
                     />
                     <MultiFileInput
-                        label="Imagenes de caracteristicas"
+                        label="Imagenes de codificación"
                         name="characteristicsImages"
                         values={formik.values.characteristicsImages ?? null}
                         setter={(characteristicsImages: string[]) =>
