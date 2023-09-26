@@ -85,8 +85,8 @@ const ProductCreationModal = () => {
                                 certificationsImage: "",
                                 characteristicsImages: [],
                                 tablesImage: "",
-                                alternatives: "",
-                                englishAlternatives: "",
+                                application: "",
+                                englishApplication: "",
                             }}
                         />
                     </ModalBody>
