@@ -60,8 +60,8 @@ const Products = ({ tabIndex }:Props) => {
                 isSortable: false,
             },
             {
-                header: "Alternativas",
-                accessor: "alternatives",
+                header: "Aplicación",
+                accessor: "application",
                 accessorFn: (cell) => cell.row.application.length > 50 ? cell.row.application.substring(0, 50) + '...' : cell.row.application,
                 isSortable: false,
             },
