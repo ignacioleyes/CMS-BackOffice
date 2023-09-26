@@ -62,7 +62,7 @@ const Products = ({ tabIndex }:Props) => {
             {
                 header: "Alternativas",
                 accessor: "alternatives",
-                accessorFn: (cell) => cell.row.alternatives.length > 50 ? cell.row.alternatives.substring(0, 50) + '...' : cell.row.alternatives,
+                accessorFn: (cell) => cell.row.application.length > 50 ? cell.row.application.substring(0, 50) + '...' : cell.row.application,
                 isSortable: false,
             },
             {
@@ -124,7 +124,7 @@ const Products = ({ tabIndex }:Props) => {
             {
                 header: "Alternativas",
                 accessor: "englishAlternatives",
-                accessorFn: (cell) => cell.row.englishAlternatives.length > 50 ? cell.row.englishAlternatives.substring(0, 50) + '...' : cell.row.englishAlternatives,
+                accessorFn: (cell) => cell.row.englishApplication.length > 50 ? cell.row.englishApplication.substring(0, 50) + '...' : cell.row.englishApplication,
                 isSortable: false,
             },
             {
