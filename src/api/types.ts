@@ -83,8 +83,8 @@ export interface Product {
     certificationsImage: string;
     characteristicsImages: string[];
     tablesImage: string;
-    alternatives: string;
-    englishAlternatives: string;
+    application: string;
+    englishApplication: string;
 }
 
 export interface ProductCreation {
@@ -100,8 +100,8 @@ export interface ProductCreation {
     certificationsImage: string;
     characteristicsImages: string[];
     tablesImage: string;
-    alternatives: string;
-    englishAlternatives: string;
+    application: string;
+    englishApplication: string;
 }
 
 export enum BrandEnum {

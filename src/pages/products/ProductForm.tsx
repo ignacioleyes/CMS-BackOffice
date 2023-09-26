@@ -30,8 +30,8 @@ const validationSchema = Yup.object().shape({
         "Imágen de caracteristicas requerida"
     ),
     tablesImage: Yup.string().required("Imágen de tabla requerida"),
-    alternatives: Yup.string().nullable(),
-    englishAlternatives: Yup.string().nullable(),
+    application: Yup.string().nullable(),
+    englishApplication: Yup.string().nullable(),
 });
 
 const ProductForm = ({
@@ -88,12 +88,12 @@ const ProductForm = ({
                     />
 
                     <FormikField
-                        label="Alternativas"
-                        name="alternatives"
-                        error={formik.errors.alternatives}
-                        touched={formik.touched.alternatives}
+                        label="Alplicación"
+                        name="application"
+                        error={formik.errors.application}
+                        touched={formik.touched.application}
                         onChange={formik.handleChange}
-                        value={formik.values.alternatives}
+                        value={formik.values.application}
                         type="text"
                     />
 
@@ -154,12 +154,12 @@ const ProductForm = ({
                         type="text"
                     />
                     <FormikField
-                        label="Alternativas en inglés"
-                        name="englishAlternatives"
-                        error={formik.errors.englishAlternatives}
-                        touched={formik.touched.englishAlternatives}
+                        label="Aplicación en inglés"
+                        name="englishApplication"
+                        error={formik.errors.englishApplication}
+                        touched={formik.touched.englishApplication}
                         onChange={formik.handleChange}
-                        value={formik.values.englishAlternatives}
+                        value={formik.values.englishApplication}
                         type="text"
                     />
                     <LabeledReactSelectInput
