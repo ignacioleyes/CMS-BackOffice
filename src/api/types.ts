@@ -75,7 +75,7 @@ export interface Product {
     englishName: string;
     description: string;
     englishDescription: string;
-    brand: BrandEnum;
+    brand: string;
     characteristics: string;
     englishCharacteristics: string;
     price: number;
@@ -92,7 +92,7 @@ export interface ProductCreation {
     englishName: string;
     description: string;
     englishDescription: string;
-    brand: BrandEnum;
+    brand: string;
     characteristics: string;
     englishCharacteristics: string;
     price: number;
@@ -104,6 +104,3 @@ export interface ProductCreation {
     englishApplication: string;
 }
 
-export enum BrandEnum {
-    Conduflex,
-}

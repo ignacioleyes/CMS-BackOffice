@@ -12,7 +12,7 @@ import { useAuthHeader } from "react-auth-kit";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useSuccessToast, useErrorToast } from "../../hooks/toasts";
 import ProductForm from "./ProductForm";
-import { BrandEnum, ProductCreation } from "../../api/types";
+import { ProductCreation } from "../../api/types";
 import { useMutation, useQueryClient } from "react-query";
 import { client } from "../../api/config";
 
@@ -77,7 +77,7 @@ const ProductCreationModal = () => {
                                 englishName: "",
                                 description: "",
                                 englishDescription: "",
-                                brand: "" as unknown as BrandEnum,
+                                brand: "",
                                 characteristics: "",
                                 englishCharacteristics: "",
                                 price: 0,

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { HStack, Img } from "@chakra-ui/react";
-import { BrandEnum, Product } from "../../api/types";
+import { Product } from "../../api/types";
 import { DynamicTableCellFormat } from "../../components/dynamicTable/DynamicTable";
 import MainLayout from "../../components/MainLayout";
 import DeleteProductCell from "./DeleteProductCell";
@@ -45,7 +45,7 @@ const Products = ({ tabIndex }:Props) => {
             {
                 header: "Marca",
                 accessor: "brand",
-                accessorFn: (cell) => `${BrandEnum[cell.row.brand]}`,
+                accessorFn: (cell) => cell.row.brand.length > 50 ? cell.row.brand.substring(0, 50) + '...' : cell.row.brand,
                 isSortable: true,
             },
             {
@@ -107,7 +107,7 @@ const Products = ({ tabIndex }:Props) => {
             {
                 header: "Marca",
                 accessor: "brand",
-                accessorFn: (cell) => `${BrandEnum[cell.row.brand]}`,
+                accessorFn: (cell) => cell.row.brand.length > 50 ? cell.row.brand.substring(0, 50) + '...' : cell.row.brand,
                 isSortable: true,
             },
             {

@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { BrandEnum, ProductCreation } from "../../api/types";
+import { ProductCreation } from "../../api/types";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { Button, chakra, Flex, HStack, VStack } from "@chakra-ui/react";
 import FormikField from "../../components/FormikField";
 import FileInput from "./FileInput";
 import MultiFileInput from "./MultiFileInput";
-import { getOptionsFromEnum } from "../../api/utils";
-import LabeledReactSelectInput from "../../components/LabeledReactSelectInput";
 
 interface Props {
     runMutation: (values: ProductCreation) => void;
@@ -56,7 +54,11 @@ const ProductForm = ({
             fontSize={"lg"}
         >
             <Flex flexDirection={{ base: "column", md: "row" }} w="full">
-                <VStack spacing={5} w={{ base: "full", md: "50%" }} pr={{ md: 5 }}>
+                <VStack
+                    spacing={5}
+                    w={{ base: "full", md: "50%" }}
+                    pr={{ md: 5 }}
+                >
                     <FormikField
                         label="Nombre"
                         name="name"
@@ -66,7 +68,6 @@ const ProductForm = ({
                         value={formik.values.name}
                         type="text"
                     />
-
                     <FormikField
                         label="Descripción"
                         name="description"
@@ -76,7 +77,6 @@ const ProductForm = ({
                         value={formik.values.description}
                         type="text"
                     />
-
                     <FormikField
                         label="Caracteristicas"
                         name="characteristics"
@@ -86,7 +86,6 @@ const ProductForm = ({
                         value={formik.values.characteristics}
                         type="text"
                     />
-
                     <FormikField
                         label="Alplicación"
                         name="application"
@@ -96,20 +95,23 @@ const ProductForm = ({
                         value={formik.values.application}
                         type="text"
                     />
-
                     <FormikField
-                        label="Precio"
-                        name="price"
-                        error={formik.errors.price}
-                        touched={formik.touched.price}
+                        label="Marcación"
+                        name="brand"
+                        error={formik.errors.brand}
+                        touched={formik.touched.brand}
                         onChange={formik.handleChange}
-                        value={formik.values.price}
-                        type="number"
+                        value={formik.values.brand}
+                        type="text"
                     />
                     <FileInput
                         value={formik.values.productImage ?? null}
                         setter={(productImage: string) =>
-                            formik.setFieldValue("productImage", productImage, true)
+                            formik.setFieldValue(
+                                "productImage",
+                                productImage,
+                                true
+                            )
                         }
                         label="Imagen del producto"
                     />
@@ -125,7 +127,11 @@ const ProductForm = ({
                         label="Imagen de certificaciones"
                     />
                 </VStack>
-                <VStack spacing={5} w={{ base: "full", md: "50%" }} pl={{ md: 5 }}>
+                <VStack
+                    spacing={5}
+                    w={{ base: "full", md: "50%" }}
+                    pl={{ md: 5 }}
+                >
                     <FormikField
                         label="Nombre en inglés"
                         name="englishName"
@@ -162,18 +168,14 @@ const ProductForm = ({
                         value={formik.values.englishApplication}
                         type="text"
                     />
-                    <LabeledReactSelectInput
-                        label="Marca"
-                        name="brand"
-                        value={formik.values.brand}
-                        error={formik.errors.brand}
-                        touched={formik.touched.brand}
-                        isClearable={false}
-                        options={getOptionsFromEnum(BrandEnum)}
-                        setter={(value: any) =>
-                            formik.setFieldValue("type", value, true)
-                        }
-                        placeholder=""
+                    <FormikField
+                        label="Precio"
+                        name="price"
+                        error={formik.errors.price}
+                        touched={formik.touched.price}
+                        onChange={formik.handleChange}
+                        value={formik.values.price}
+                        type="number"
                     />
                     <MultiFileInput
                         label="Imagenes de codificación"
@@ -190,7 +192,11 @@ const ProductForm = ({
                     <FileInput
                         value={formik.values.tablesImage ?? null}
                         setter={(tablesImage: string) =>
-                            formik.setFieldValue("tablesImage", tablesImage, true)
+                            formik.setFieldValue(
+                                "tablesImage",
+                                tablesImage,
+                                true
+                            )
                         }
                         label="Imagen de tablas"
                     />
