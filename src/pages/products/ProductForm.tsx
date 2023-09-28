@@ -19,7 +19,7 @@ const validationSchema = Yup.object().shape({
     englishName: Yup.string().nullable(),
     description: Yup.string().required("Descripción requerida"),
     englishDescription: Yup.string().nullable(),
-    brand: Yup.string().required("Marca requerida"),
+    brand: Yup.string().required("Marcación requerida"),
     characteristics: Yup.string().required("Caracteristicas requeridas"),
     englishCharacteristics: Yup.string().nullable(),
     price: Yup.number().required("Precio requerido"),

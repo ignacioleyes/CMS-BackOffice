@@ -5,6 +5,7 @@ import {
     IconButton,
     Input,
     FormLabel,
+    FormErrorMessage,
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import { IoMdTrash } from "react-icons/io";
@@ -75,6 +76,7 @@ const MultiFileInput = ({
                         </HStack>
                     ))}
             </HStack>
+            <FormErrorMessage>{error}</FormErrorMessage>
         </FormControl>
     );
 };
