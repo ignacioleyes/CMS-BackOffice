@@ -8,6 +8,7 @@ import {
     AlertDialogOverlay,
     Button,
     Image,
+    Tooltip,
     useDisclosure,
     useToast,
 } from "@chakra-ui/react";
@@ -55,12 +56,14 @@ const DeleteButton = ({ id }: Props) => {
 
     return (
         <>
-            <Image
-                width={"2rem"}
-                src={DeleteIcon}
-                cursor={"pointer"}
-                onClick={onOpen}
-            />
+            <Tooltip hasArrow label={"Eliminar"} bg={"orange.400"}>
+                <Image
+                    width={"2rem"}
+                    src={DeleteIcon}
+                    cursor={"pointer"}
+                    onClick={onOpen}
+                />
+            </Tooltip>
             <AlertDialog
                 isOpen={isOpen}
                 leastDestructiveRef={cancelRef}

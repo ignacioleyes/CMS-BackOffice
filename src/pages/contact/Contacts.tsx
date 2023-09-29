@@ -3,6 +3,7 @@ import { Contact } from "../../api/types";
 import { DynamicTableCellFormat } from "../../components/dynamicTable/DynamicTable";
 import MainLayout from "../../components/MainLayout";
 import DeleteContactCell from "./DeleteContactCell";
+import SeeContactDetails from "./SeeContactDetails";
 
 const format: DynamicTableCellFormat<Contact>[] = [
     {
@@ -23,6 +24,7 @@ const format: DynamicTableCellFormat<Contact>[] = [
     {
         header: "Mensaje",
         accessor: "message",
+        accessorFn: (cell) => cell.row.message.length > 50 ? cell.row.message.substring(0, 50) + '...' : cell.row.message,
         isSortable: true,
     },
     {
@@ -35,6 +37,11 @@ const format: DynamicTableCellFormat<Contact>[] = [
         header: "",
         accessor: "",
         accessorFn: (cell) => <DeleteContactCell id={cell.row.id} />,
+    },
+    {
+        header: "",
+        accessor: "",
+        accessorFn: (cell) => <SeeContactDetails contact={cell.row} />,
     },
 ];
 

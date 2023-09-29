@@ -43,15 +43,10 @@ const Products = ({ tabIndex }:Props) => {
                 isSortable: false,
             },
             {
-                header: "Marca",
+                header: "Marcación",
                 accessor: "brand",
                 accessorFn: (cell) => cell.row.brand.length > 50 ? cell.row.brand.substring(0, 50) + '...' : cell.row.brand,
                 isSortable: true,
-            },
-            {
-                header: "Precio",
-                accessor: "price",
-                isSortable: false,
             },
             {
                 header: "Caraterísticas",
@@ -105,15 +100,10 @@ const Products = ({ tabIndex }:Props) => {
                 isSortable: false,
             },
             {
-                header: "Marca",
+                header: "Marcación",
                 accessor: "brand",
                 accessorFn: (cell) => cell.row.brand.length > 50 ? cell.row.brand.substring(0, 50) + '...' : cell.row.brand,
                 isSortable: true,
-            },
-            {
-                header: "Precio",
-                accessor: "price",
-                isSortable: false,
             },
             {
                 header: "Caraterísticas",
